@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- loading properties file -->
+
+
+	<!-- Define your beans here -->
+	<bean id="myFortune" class="com.springdemo.HappyFortuneService">
+	</bean>
+
+
+<!-- The init is called before the object is created and the destroy method is called
+after the bean is destroyed -->
+<!-- Also the destroy method is not called for beans scoped as prototype -->
+	<bean id="myCoach" class="com.springdemo.TrackCoach"
+	init-method = "doMyStartUpStuff"
+	destroy-method = "doMyCleanUpStuff">
+
+		<!-- constructor injection setup -->
+		<constructor-arg ref="myFortune" />
+	</bean>
+
+</beans>
+
+
+ 
+
+
+ 
